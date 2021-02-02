@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flask Tutorial</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="{{ url_for('static', filename='css/bootstrap.css') }}"
+	rel="stylesheet">
+<link rel="shortcut icon"
+	href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<header>
+	<nav class="navbar navbar-expand-lg ">
+
+		<!-- navbar brand icon -->
+		<a class="navbar-brand" href="/">
+			<img style="max-width: 120px; margin-top: -7px;"
+				src="{{ url_for('static', filename='images/mainlogo-old.png') }} ">
+		</a>
+
+
+		<div class="container-fluid">
+			<a href="/dashboard/">
+
+				<button type="button" class="btn btn-primary text-nowrap"
+					aria-label="Left Align">
+					<!-- 
+	                -->
+					<svg width="1em" 
+					    height="1em" 
+					    viewBox="0 0 16 16"
+						class="bi bi-power" 
+						fill="currentColor"
+						xmlns="http://www.w3.org/2000/svg">
+	                    <path fill-rule="evenodd"
+							d="M5.578 4.437a5 5 0 1 0 4.922.044l.5-.866a6 6 0 1 1-5.908-.053l.486.875z" />
+	                    <path fill-rule="evenodd" d="M7.5 8V1h1v7h-1z" />
+	                </svg>
+					Start Learning
+					<!-- -->
+				</button>
+			</a>
+			<ul class="nav navbar-nav navbar-right">
+
+				<div
+					style="margin-right: 10px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;"
+					class="container-fluid">
+					<h5>
+
+						<a href="/support-donate/">
+							<svg width="1em" height="1em" viewBox="0 0 16 16"
+								class="bi bi-heart-fill" fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg">
+  								<path fill-rule="evenodd"
+									d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+							</svg>
+							Support&nbsp;&nbsp;&nbsp;
+						</a>
+						<a href="/login/">
+							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							  <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+							  <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+							</svg>							
+							Login&nbsp;&nbsp;&nbsp;
+						</a>
+
+						<div class="modal fade" id="exampleModal" tabindex="-1"
+							role="dialog" aria-labelledby="exampleModalLabel"
+							aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Login</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										
+									</div>
+									<div class="modal-body">
+										<div class="container-fluid">
+											<form action="" class="form-inline" method="post">
+												<dl>
+													<dt>
+														<label for="username">Username</label>
+													<dd>
+														<input type="text" class="form-control"
+															placeholder="Username" name="username" value="">	
+													</dd>
+												
+													<dt>
+														<label for="password">Password</label>
+													<dd>												
+													
+														<input type="password" class="form-control"
+															placeholder="Password" name="password" value="">
+													</dd>
+												
+												
+													
+													<input class="btn btn-primary" type="submit" value="Login">
+													
+												</dl>
+											</form>
+
+											<div class="container">
+												<br>
+												<p>
+													No account?
+													<a href='/register'>Register here</a>
+													.
+												</p>
+												<br>
+
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+						<a role="presentation" class="active" data-toggle="modal"
+							data-target="#register" href="#">
+							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  								<path fill-rule="evenodd" d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+							</svg>
+							Sign up
+						</a>
+						<h5>
+							<div class="modal fade" id="register" tabindex="-1" role="dialog"
+								aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title" id="exampleModalLabel">Register</h4>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times</span>
+											</button>
+											
+										</div>
+										<div class="modal-body">
+											<div class="container">
+
+												<form method=post action="/register">
+													<dl>
+
+														<dt>
+															<label for="username">Username</label>
+														<dd>
+															<input id="username" name="username" type="text" value="">
+
+														</dd>
+
+
+														<dt>
+															<label for="email">Email Address</label>
+														<dd>
+															<input id="email" name="email" type="text" value="">
+
+														</dd>
+
+
+														<dt>
+															<label for="password">New Password</label>
+														<dd>
+															<input id="password" name="password" type="password"
+																value="">
+
+														</dd>
+
+
+														<dt>
+															<label for="confirm">Repeat Password</label>
+														<dd>
+															<input id="confirm" name="confirm" type="password"
+																value="">
+
+														</dd>
+
+
+														<dt>
+															<label for="accept_tos">
+																I accept the
+																<a href="/about/tos" target="blank">Terms of Service</a>
+																and
+																<a href="/about/privacy-policy" target="blank">Privacy
+																	Notice</a>
+																(updated Jan 22, 2015)
+															</label>
+														<dd>
+															<input id="accept_tos" name="accept_tos" type="checkbox"
+																value="y">
+
+														</dd>
+
+													</dl>
+													<p>
+														<input type=submit value=Register>
+												</form>
+
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+				</div>
+			</ul>
+			</ul>
+		</div>
+		</div>
+	</nav>
+</header>
+
+<body>
+	<div class="container-fluid" style="min-height:100% width:80%">
+		<div class="class="container">
+			{% with messages = get_flashed_messages() %}
+			  {% if messages %}
+			    {% for message in messages %}
+	  				<div class="row justify-content-start">
+   						<div class="col-6 col-sm-3">
+				  			<div class="alert alert-warning alert-dismissible" role="alert">
+				  				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+								{{message}}
+				  			</div>
+						</div>
+						
+	  				</div>
+				{% endfor %}
+			  {% endif %}
+			{% endwith %}
+
+		</div>
+
+
+<!-- -->
+	<a href="/dashboard/">
+		<video autoplay="autoplay" muted="muted" poster="/static/videos/python-programming-tutorials-main.png" style="width:100%; max-height:80%" >
+			<source src="/static/videos/python-programming-tutorials-main.mp4" type="video/mp4" type="video/mp4">
+			<source src="/static/videos/python-programming-tutorials-main.webm" type="video/webm">
+		</video>
+	</a>
+		
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript"
+		src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+</body>
+
+
+</html>
+
